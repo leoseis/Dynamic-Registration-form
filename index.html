@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Event Registration System</title>
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+    <!-- =========================
+         MAIN PAGE CONTENT
+    ========================== -->
+    <main class="main-container">
+
+        <section class="hero-section">
+            <h1>Dynamic Event Registration System
+                
+            </h1>
+           
+            <p>
+                Register for the university event using the interactive
+                multi-step registration form.
+            </p>
+             <p> Juliet Emelieze </p>
+
+            <!-- OPEN MODAL BUTTON -->
+            <button id="openModalBtn" class="open-modal-btn">
+                Register Now
+            </button>
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         MODAL OVERLAY
+    ========================== -->
+    <div id="registrationModal" class="modal-overlay">
+
+        <!-- MODAL CONTENT -->
+        <div class="modal-content">
+
+            <!-- CLOSE BUTTON -->
+            <button id="closeModalBtn" class="close-btn">
+                &times;
+            </button>
+
+            <!-- MODAL HEADER -->
+            <header class="modal-header">
+                <h2>Student Registration Form</h2>
+                <p>Please complete all required fields</p>
+            </header>
+
+            <!-- STEP INDICATOR -->
+            <div class="step-indicator">
+
+                <div class="step active" id="stepIndicator1">
+                    <span>1</span>
+                    <p>Personal Info</p>
+                </div>
+
+                <div class="step" id="stepIndicator2">
+                    <span>2</span>
+                    <p>Institution Details</p>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 REGISTRATION FORM
+            ========================== -->
+            <form id="registrationForm">
+
+                <!-- =========================
+                     STEP 1
+                ========================== -->
+                <section id="step1" class="form-step active-step">
+
+                    <h3>Personal Information</h3>
+
+                    <!-- ACADEMIC LEVEL -->
+                    <div class="form-group">
+                        <label for="academicLevel">
+                            Academic Level
+                        </label>
+
+                        <select id="academicLevel" name="academicLevel" required>
+                            <option value="">
+                                -- Select Academic Level --
+                            </option>
+
+                            <option value="undergraduate">
+                                Undergraduate
+                            </option>
+
+                            <option value="postgraduate">
+                                Postgraduate
+                            </option>
+                        </select>
+
+                        <small class="error-message" id="levelError"></small>
+                    </div>
+
+
+                    <!-- MATRIC NUMBER -->
+                    <div class="form-group">
+                        <label for="matricNumber">
+                            Matric Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="matricNumber"
+                            name="matricNumber"
+                            placeholder="e.g UG20261023"
+                            required
+                        />
+
+                        <small class="error-message" id="matricError"></small>
+                    </div>
+
+
+                    <!-- FULL NAME -->
+                    <div class="form-group">
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required
+                        />
+
+                        <small class="error-message" id="nameError"></small>
+                    </div>
+
+
+                    <!-- DATE OF BIRTH -->
+                    <div class="form-group">
+                        <label for="dateOfBirth">
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dateOfBirth"
+                            name="dateOfBirth"
+                            required
+                        />
+
+                        <small class="error-message" id="dobError"></small>
+                    </div>
+
+
+                    <!-- DEPARTMENT -->
+                    <div class="form-group">
+                        <label for="department">
+                            Department
+                        </label>
+
+                        <select id="department" name="department" required>
+                            <option value="">
+                                Loading departments...
+                            </option>
+                        </select>
+
+                        <small class="error-message" id="departmentError"></small>
+                    </div>
+
+
+                    <!-- NEXT BUTTON -->
+                    <div class="button-group">
+                        <button
+                            type="button"
+                            id="nextBtn"
+                            class="next-btn"
+                        >
+                            Next
+                        </button>
+                    </div>
+
+                </section>
+
+
+
+                <!-- =========================
+                     STEP 2
+                ========================== -->
+                <section id="step2" class="form-step">
+
+                    <h3>Accommodation / Institution Details</h3>
+
+
+                    <!-- UNDERGRADUATE FIELD -->
+                    <div
+                        class="form-group dynamic-field hidden"
+                        id="hostelField"
+                    >
+                        <label for="hostelName">
+                            Hostel Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="hostelName"
+                            name="hostelName"
+                            placeholder="Enter hostel name"
+                        />
+
+                        <small class="error-message" id="hostelError"></small>
+                    </div>
+
+
+                    <!-- POSTGRADUATE FIELD -->
+                    <div
+                        class="form-group dynamic-field hidden"
+                        id="institutionField"
+                    >
+                        <label for="lastInstitution">
+                            Last Institution Attended
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastInstitution"
+                            name="lastInstitution"
+                            placeholder="Enter previous institution"
+                        />
+
+                        <small class="error-message" id="institutionError"></small>
+                    </div>
+
+
+                    <!-- BUTTONS -->
+                    <div class="button-group">
+
+                        <!-- PREVIOUS BUTTON -->
+                        <button
+                            type="button"
+                            id="prevBtn"
+                            class="prev-btn"
+                        >
+                            Previous
+                        </button>
+
+                        <!-- SUBMIT BUTTON -->
+                        <button
+                            type="submit"
+                            id="submitBtn"
+                            class="submit-btn"
+                        >
+                            Submit Registration
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT FILE
+    ========================== -->
+    <script src="script.js"></script>
+
+</body>
+</html>
