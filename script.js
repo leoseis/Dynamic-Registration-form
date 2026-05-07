@@ -69,6 +69,135 @@ const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 
 
+
+// =========================
+// FORM ELEMENT
+// =========================
+const registrationForm = document.getElementById("registrationForm");
+
+
+// =========================
+// FORM SUBMISSION
+// =========================
+registrationForm.addEventListener("submit", function (event) {
+
+    // PREVENT PAGE REFRESH
+    event.preventDefault();
+
+
+    // =========================
+    // GET FORM VALUES
+    // =========================
+    const level = academicLevel.value;
+
+    const matricNumber = document
+        .getElementById("matricNumber")
+        .value
+        .trim();
+
+    const fullName = document
+        .getElementById("fullName")
+        .value
+        .trim();
+
+    const dateOfBirth = document
+        .getElementById("dateOfBirth")
+        .value;
+
+    const department = departmentSelect.value;
+
+    const hostelName = document
+        .getElementById("hostelName")
+        .value
+        .trim();
+
+    const lastInstitution = document
+        .getElementById("lastInstitution")
+        .value
+        .trim();
+
+
+    // =========================
+    // BASIC VALIDATION
+    // =========================
+    if (
+        level === "" ||
+        matricNumber === "" ||
+        fullName === "" ||
+        dateOfBirth === "" ||
+        department === ""
+    ) {
+
+        alert("Please fill in all required fields.");
+
+        return;
+    }
+
+
+    // =========================
+    // UNDERGRADUATE VALIDATION
+    // =========================
+    if (level === "undergraduate" && hostelName === "") {
+
+        alert("Please enter hostel name.");
+
+        return;
+    }
+
+
+    // =========================
+    // POSTGRADUATE VALIDATION
+    // =========================
+    if (level === "postgraduate" && lastInstitution === "") {
+
+        alert("Please enter last institution attended.");
+
+        return;
+    }
+
+
+    // =========================
+    // SUCCESS MESSAGE
+    // =========================
+    alert("Registration Successful!");
+
+
+    // =========================
+    // RESET FORM
+    // =========================
+    registrationForm.reset();
+
+
+    // =========================
+    // RESET DYNAMIC FIELDS
+    // =========================
+    updateAcademicFields();
+
+
+    // =========================
+    // RETURN TO STEP 1
+    // =========================
+    step1.classList.add("active-step");
+
+    step2.classList.remove("active-step");
+
+
+    // =========================
+    // RESET STEP INDICATORS
+    // =========================
+    stepIndicator1.classList.add("active");
+
+    stepIndicator2.classList.remove("active");
+
+
+    // =========================
+    // CLOSE MODAL
+    // =========================
+    registrationModal.style.display = "none";
+
+});
+
+
 // STEP INDICATORS
 const stepIndicator1 = document.getElementById("stepIndicator1");
 
