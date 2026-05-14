@@ -156,10 +156,61 @@ registrationForm.addEventListener("submit", function (event) {
     }
 
 
-    // =========================
-    // SUCCESS MESSAGE
-    // =========================
-    alert("Registration Successful!");
+    /// =========================
+// DATE OF BIRTH VALIDATION
+// =========================
+const today = new Date();
+
+const birthDate = new Date(dateOfBirth);
+
+let age = today.getFullYear() - birthDate.getFullYear();
+
+const monthDifference =
+    today.getMonth() - birthDate.getMonth();
+
+
+// CHECK IF BIRTHDAY HAS NOT OCCURRED YET THIS YEAR
+if (
+    monthDifference < 0 ||
+    (
+        monthDifference === 0 &&
+        today.getDate() < birthDate.getDate()
+    )
+) {
+    age--;
+}
+
+
+// =========================
+// UNDERGRADUATE AGE CHECK
+// =========================
+if (level === "undergraduate" && age >= 25) {
+
+    alert(
+        "Undergraduate students must be younger than 25 years old."
+    );
+
+    return;
+}
+
+
+// =========================
+// POSTGRADUATE AGE CHECK
+// =========================
+if (level === "postgraduate" && age < 22) {
+
+    alert(
+        "Postgraduate students must be at least 22 years old."
+    );
+
+    return;
+}
+
+
+// =========================
+// SUCCESS MESSAGE
+// =========================
+alert("Registration Successful!");
 
 
     // =========================
